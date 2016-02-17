@@ -1,6 +1,0 @@
-== README
-
-This is a simple API that utilizes 2014 Boston employee earnings data to
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.

@@ -5,8 +5,8 @@ class Salary
 attr_reader :amount, :title
 
   def initialize amount, title
-    @amount = Salary.formatted_salary amount
     @title = title
+    @amount = Salary.formatted_salary amount
   end
 
   def self.formatted_salary salary
