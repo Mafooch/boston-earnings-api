@@ -4,13 +4,12 @@ class SalariesController < ApplicationController
 
   def average_salary
     employees = params[:title] ? Employee.has_title(params[:title]) : Employee.all
+    params[:title] ||= "all"
 
-    average_salary = Salary.new Salary.average(employees)
-    formatted_salary = average_salary.formatted
+    average_salary = Salary.new(Salary.average(employees), params[:title])
 
-    average_salary_hash = { "average_salary" => formatted_salary }
-    if average_salary_hash["average_salary"]
-      render json: average_salary_hash, status: 200
+    if average_salary.amount.present?
+      render json: average_salary, status: 200
     else
       render json: { error: "No matching titles found" }, status: 404
     end

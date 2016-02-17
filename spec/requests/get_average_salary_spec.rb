@@ -20,7 +20,7 @@ RSpec.describe "Salaries API", type: :request do
 
         expect(Mime::JSON).to eq response.content_type
         expect(response).to have_http_status 200
-        expect(json_body[:average_salary]).to eq average
+        expect(json_body[:amount]).to eq average
       end
 
       it "returns average salary by all partially matching titles" do
@@ -29,7 +29,7 @@ RSpec.describe "Salaries API", type: :request do
 
         expect(Mime::JSON).to eq response.content_type
         expect(response).to have_http_status 200
-        expect(json_body[:average_salary]).to eq average
+        expect(json_body[:amount]).to eq average
       end
     end
 
@@ -40,7 +40,7 @@ RSpec.describe "Salaries API", type: :request do
 
         expect(Mime::JSON).to eq response.content_type
         expect(response).to have_http_status 200
-        expect(json_body[:average_salary]).to eq average
+        expect(json_body[:amount]).to eq average
       end
     end
 

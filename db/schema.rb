@@ -10,7 +10,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-
+# TODO parse name out into different fields i.e. first, last, prefix, etc..
 ActiveRecord::Schema.define(version: 20160216232956) do
 
   create_table "employees", force: :cascade do |t|
