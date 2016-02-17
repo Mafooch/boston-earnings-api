@@ -8,9 +8,8 @@ class Salary
   end
 
   def formatted
-    # binding.pry
     ActionController::Base.helpers.number_to_currency @amount
-    # a method already available with rails, typically use in views
+    # a method already available with rails, typically used in views
   end
 
   def self.average employee_records
