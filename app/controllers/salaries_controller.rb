@@ -9,7 +9,6 @@ class SalariesController < ApplicationController
     formatted_salary = average_salary.formatted
 
     average_salary_hash = { "average_salary" => formatted_salary }
-    # binding.pry
     if average_salary_hash["average_salary"]
       render json: average_salary_hash, status: 200
     else

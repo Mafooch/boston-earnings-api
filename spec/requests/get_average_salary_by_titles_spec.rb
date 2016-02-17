@@ -15,47 +15,42 @@ RSpec.describe "Salaries API", type: :request do
     context "when supplied a title parameter" do
 
       it "returns the average salary by title" do
-        average = "$104,022.98"
-
         get "/average_salary?title=doctor"
-        json = JSON.parse response.body
-        # TODO create a module method for this
+        average = "$104,022.98"
 
         expect(Mime::JSON).to eq response.content_type
         expect(response).to have_http_status 200
-        expect(json["average_salary"]).to eq average
+        expect(json_body[:average_salary]).to eq average
       end
 
       it "returns average salary by all partially matching titles" do
-        average = "$51,877.42"
-
         get "/average_salary?title=teacher"
-        json = JSON.parse response.body
+        average = "$51,877.42"
 
         expect(Mime::JSON).to eq response.content_type
         expect(response).to have_http_status 200
-        expect(json["average_salary"]).to eq average
+        expect(json_body[:average_salary]).to eq average
       end
     end
 
     context "when not supplied a title parameter" do
       it "returns the average salary for all employees" do
         get "/average_salary"
-        json = JSON.parse response.body
         average = "$72,735.65"
+
         expect(Mime::JSON).to eq response.content_type
         expect(response).to have_http_status 200
-        expect(json["average_salary"]).to eq average
+        expect(json_body[:average_salary]).to eq average
       end
     end
 
     context "when given a title with no matches" do
       it "returns an error code and message" do
         get "/average_salary?title=nonexistenttitle"
-        json = JSON.parse response.body
+
         expect(Mime::JSON).to eq response.content_type
         expect(response).to have_http_status 404
-        expect(json["error"]).to eq "No matching titles found"
+        expect(json_body[:error]).to eq "No matching titles found"
       end
     end
   end
